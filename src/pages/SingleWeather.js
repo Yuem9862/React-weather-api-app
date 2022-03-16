@@ -1,7 +1,11 @@
 import React from "react";
 
 function SingleWeather() {
-  return <h1>SingleWeather</h1>;
+  return (
+    <div className='section-center single-weather'>
+      <h1>single weather</h1>
+    </div>
+  );
 }
 
 export default SingleWeather;

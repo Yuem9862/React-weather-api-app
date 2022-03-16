@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
-import { Home, SingleWeather, Error } from "./pages";
+import { Home, SingleWeather, Error, About } from "./pages";
 
 function App() {
   console.log(process.env.REACT_APP_TEST_KEY);
@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/city/:id' element={<SingleWeather />} />
+          <Route path='/about' element={<About />} />
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />

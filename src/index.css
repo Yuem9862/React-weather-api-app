@@ -5,6 +5,75 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --clr-primary-5: #1d3557;
+  --clr-primary-4: #457b9d;
+  --clr-primary-3: #a8dadc;
+  --clr-primary-2: #f1faee;
+  --clr-primary-1: #e63946;
+
+  --spacing: 0.1rem;
+}
+
+body {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-primary-2);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin: 2rem 0;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
 
 img {
   width: 100%;
@@ -15,11 +84,89 @@ img {
 .section-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 992px;
 }
 
 @media screen and (min-width: 992px) {
   .section-center {
     width: 95vw;
   }
+}
+.capitalized-btn {
+  text-transform: uppercase;
+  letter-spacing: var(--spacing);
+}
+
+/* ----------------- navbar ----------------- */
+.navbar {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.logo {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--clr-primary-2);
+}
+.logo:hover {
+  color: var(--clr-primary-2);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ----------------- footer ----------------- */
+.footer {
+  height: 5rem;
+  background-color: var(--clr-primary-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer span {
+  color: var(--clr-primary-1);
+}
+
+.footer h5 {
+  margin: 0.1rem;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 776px) {
+  .footer {
+    flex-direction: row;
+  }
+}
+/* ----------------- home ----------------- */
+.home {
+  height: calc(100vh - 14rem);
+}
+/* -----------------single weather----------------- */
+.single-weather {
+  height: calc(100vh - 14rem);
+}
+/* ----------------- about ----------------- */
+.about {
+  height: calc(100vh - 14rem);
+}
+.about h2 {
+  margin: 2rem 0;
+}
+/* ----------------- error ----------------- */
+.error {
+  height: calc(100vh - 14rem);
 }

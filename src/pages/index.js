@@ -1,5 +1,5 @@
 import Home from "./Home";
 import SingleWeather from "./SingleWeather";
 import Error from "./Error";
-
-export { Home, SingleWeather, Error };
+import About from "./About";
+export { Home, SingleWeather, Error, About };
