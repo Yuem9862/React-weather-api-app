@@ -6,7 +6,6 @@ import Loading from "./components/Loading";
 import { Home, SingleWeather, Error, About } from "./pages";
 
 function App() {
-  console.log(process.env.REACT_APP_TEST_KEY);
   return (
     <>
       <Router>

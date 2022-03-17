@@ -99,11 +99,11 @@ img {
 
 /* ----------------- navbar ----------------- */
 .navbar {
-  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 2rem 0;
+  gap: 2rem;
 }
 
 .logo {
@@ -113,6 +113,7 @@ img {
   text-decoration: none;
   color: var(--clr-primary-2);
 }
+
 .logo:hover {
   color: var(--clr-primary-2);
 }
@@ -126,6 +127,9 @@ img {
 
 /* ----------------- footer ----------------- */
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 5rem;
   background-color: var(--clr-primary-4);
   display: flex;
@@ -152,21 +156,53 @@ img {
   }
 }
 /* ----------------- home ----------------- */
-.home {
-  height: calc(100vh - 14rem);
+/* ----------------- search form ----------------- */
+.search-form {
+  color: var(--clr-primary-5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
+.input {
+  flex: 1;
+}
+
 /* -----------------single weather----------------- */
-.single-weather {
-  height: calc(100vh - 14rem);
-}
+
 /* ----------------- about ----------------- */
-.about {
-  height: calc(100vh - 14rem);
-}
+
 .about h2 {
   margin: 2rem 0;
 }
 /* ----------------- error ----------------- */
 .error {
   height: calc(100vh - 14rem);
+}
+/* -----------------loading----------------- */
+.loader {
+  height: 40vh;
+  width: 40vw;
+  margin: auto auto;
+}
+.loading {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.loading::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 10px solid var(--clr-primary-3);
+  border-top-color: var(--clr-primary-4);
+  border-radius: 50%;
+  animation: loading 1.2s ease infinite;
+}
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
 }

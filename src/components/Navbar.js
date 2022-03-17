@@ -7,7 +7,7 @@ function Navbar() {
     <>
       <div className='section-center'>
         <div className='navbar'>
-          <Link to='/' class='logo'>
+          <Link to='/' className='logo'>
             Weather API App
           </Link>
           <div className='buttons'>
