@@ -9,16 +9,13 @@ function WeatherList() {
   if (isLoading) {
     return <Loading />;
   }
-  if (weathers.length < 1) {
-    return (
-      <div className='section-center error'>
-        <h3>Sorry, no weather matched your search criteria.</h3>
-      </div>
-    );
-  }
+
   return (
     <>
-      <Weather />
+      {weathers.map((weather) => {
+        const { id } = weather;
+        return <Weather key={id} {...weather} />;
+      })}
     </>
   );
 }

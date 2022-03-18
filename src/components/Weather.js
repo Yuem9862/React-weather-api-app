@@ -1,7 +1,7 @@
 import React from "react";
 
-function Weather() {
-  return <div>Weather</div>;
+function Weather({ city }) {
+  return <article>{city}</article>;
 }
 
 export default Weather;

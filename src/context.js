@@ -4,18 +4,25 @@ import React, { useState, useContext } from "react";
 
 const WeatherContext = React.createContext();
 function WeatherProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [weathers, setWeathers] = useState([]);
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    msg: "",
+    type: "",
+  });
   return (
     <WeatherContext.Provider
       value={{
         isLoading,
         searchTerm,
         weathers,
+        alert,
         setIsLoading,
         setSearchTerm,
         setWeathers,
+        setAlert,
       }}
     >
       {children}

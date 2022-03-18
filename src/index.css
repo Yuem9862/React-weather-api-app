@@ -175,10 +175,7 @@ img {
 .about h2 {
   margin: 2rem 0;
 }
-/* ----------------- error ----------------- */
-.error {
-  height: calc(100vh - 14rem);
-}
+
 /* -----------------loading----------------- */
 .loader {
   height: 40vh;

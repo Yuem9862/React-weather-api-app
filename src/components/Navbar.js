@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <>
-      <div className='section-center'>
+      <nav className='section-center'>
         <div className='navbar'>
           <Link to='/' className='logo'>
             Weather API App
@@ -19,7 +19,7 @@ function Navbar() {
             </Button>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 }

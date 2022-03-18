@@ -4,10 +4,10 @@ import WeatherList from "../components/WeatherList";
 
 function Home() {
   return (
-    <div className='section-center home'>
+    <main className='section-center home'>
       <SearchForm />
       <WeatherList />
-    </div>
+    </main>
   );
 }
 
