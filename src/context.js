@@ -20,12 +20,13 @@ function WeatherProvider({ children }) {
 
     //fetch the data
     try {
-      const url = `${endpoint}q=${searchTerm}&appid=${process.env.REACT_APP_TEST_KEY}`;
+      const url = `${endpoint}q=${searchTerm}&appid=${process.env.REACT_APP_TEST_KEY}&units=metric`;
       const response = await fetch(url);
       const data = await response.json();
       const {
         name,
         weather,
+        main: { temp },
         sys: { country, sunrise, sunset },
       } = data;
       setIsLoading(false);
@@ -38,6 +39,8 @@ function WeatherProvider({ children }) {
         description: weather[0].description,
         sunrise: sunrise,
         sunset: sunset,
+        temp: temp,
+        icon: weather[0].icon,
       };
       setWeathers([...weathers, newWeather]);
 
@@ -50,7 +53,7 @@ function WeatherProvider({ children }) {
 
   //by default, the page will should the current weather in Toronto
   useEffect(() => {
-    fetchData("Toronto");
+    fetchData("toronto");
   }, []);
 
   return (

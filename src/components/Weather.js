@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -7,31 +8,70 @@ import {
   CardText,
   Button,
 } from "reactstrap";
+import { useGlobalContext } from "../context";
 
-const Weather = ({ country, city, weather }) => {
-  const random = Math.floor(Math.random() * 10) + 1050;
-  console.log(city);
+const Weather = ({ country, city, weather, temp, icon, id }) => {
+  const { weathers, setWeathers, setAlert } = useGlobalContext();
+
+  const handleClick = (e) => {
+    //for more-info button
+    if (e.target.classList.contains("more")) {
+      //routering
+    }
+
+    //for delete button
+    if (e.target.classList.contains("delete")) {
+      if (weathers.length === 1) {
+        setAlert({
+          isOpen: true,
+          msg: "please enter a city",
+          type: "danger",
+        });
+      }
+      const removeID = e.target.parentElement.parentElement.parentElement.id;
+      const keepWeathers = weathers.filter((weather) => {
+        return weather.id !== removeID;
+      });
+      setWeathers(keepWeathers);
+    }
+  };
+
   return (
-    <Card className='weahter-card' style={{ borderRadius: "0.25rem" }}>
+    <Card id={id} className='weather-card' style={{ borderRadius: "0.25rem" }}>
       <CardImg
-        alt={city}
-        src={`https://picsum.photos/id/${random}/318/180`}
         top
         width='100%'
+        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+        alt='weather icon'
+        className='weather-icon'
       />
       <CardBody className='weather-info'>
         <CardTitle>
-          {city}, {country}
+          {city}, {country} - {weather}
         </CardTitle>
-        <CardText>{weather} </CardText>
+        <CardText>{temp} °C</CardText>
         <div className='buttons'>
-          <Button outline>Learn More</Button>
-          <Button outline>Close</Button>
+          <Button
+            outline
+            className='more'
+            onClick={handleClick}
+            tag={Link}
+            to={`/city/${id}`}
+          >
+            Learn More
+          </Button>
+          <Button
+            type='button'
+            outline
+            onClick={handleClick}
+            className='delete'
+          >
+            Delete
+          </Button>
         </div>
       </CardBody>
     </Card>
   );
 };
 
-//while using context API, use React.memo to reduce unnecessary re-rendering
-export default React.memo(Weather);
+export default Weather;

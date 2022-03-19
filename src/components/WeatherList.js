@@ -13,10 +13,13 @@ const WeatherList = () => {
 
   return (
     <CardGroup className='weather-group'>
-      {weathers.map((weather) => {
-        const { id } = weather;
-        return <Weather key={id} {...weather} />;
-      })}
+      {weathers
+        .slice(0)
+        .reverse()
+        .map((weather) => {
+          const { id } = weather;
+          return <Weather key={id} {...weather} />;
+        })}
     </CardGroup>
   );
 };

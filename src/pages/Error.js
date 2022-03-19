@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Error() {
   return (
     <>
-      <main className='section-center'>
+      <main className='section-center error'>
         <h3>Oops! It's a dead end...</h3>
         <Button
           tag={Link}

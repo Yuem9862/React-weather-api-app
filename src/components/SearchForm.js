@@ -8,7 +8,6 @@ function SearchForm() {
     searchTerm,
     setSearchTerm,
     weathers,
-    setWeathers,
     alert,
     setAlert,
     isError,
@@ -22,7 +21,7 @@ function SearchForm() {
     if (!searchTerm) {
       setAlert({
         isOpen: true,
-        msg: "please enter a city",
+        msg: "Please enter a city",
         type: "danger",
       });
     }
@@ -34,10 +33,8 @@ function SearchForm() {
         msg: "Error 500, please retry later",
         type: "danger",
       });
-    }
-
-    //if there are over 5 search terms, show alert
-    if (weathers.length > 4) {
+      //if there are over 9 search terms, show alert
+    } else if (weathers.length > 10) {
       setAlert({
         isOpen: true,
         msg: "too many requests, please reduce one",

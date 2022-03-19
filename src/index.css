@@ -125,6 +125,13 @@ img {
 }
 
 /* ----------------- footer ----------------- */
+
+.home,
+.error,
+.about,
+.city-page {
+  padding-bottom: 2.5rem;
+}
 .footer {
   position: fixed;
   bottom: 0;
@@ -154,7 +161,6 @@ img {
     flex-direction: row;
   }
 }
-/* ----------------- home ----------------- */
 /* ----------------- search form ----------------- */
 .search-form {
   color: var(--clr-primary-5);
@@ -175,13 +181,14 @@ img {
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
-.weahter-card {
-  max-width: calc((100% - 2rem) / 3);
-  min-width: calc((100% - 2rem) / 3);
+.weather-card {
+  max-width: calc((100% - 3rem) / 4);
+  min-width: 200px;
 }
 .weather-info {
   color: var(--clr-primary-5);
 }
+
 /* ----------------- about ----------------- */
 
 .about h2 {
@@ -214,4 +221,9 @@ img {
   to {
     transform: rotate(1turn);
   }
+}
+/* -----------------routing: city page ----------------- */
+.city-page {
+  color: var(--clr-primary-5);
+  max-height: 70vh;
 }
