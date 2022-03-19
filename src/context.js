@@ -28,7 +28,6 @@ function WeatherProvider({ children }) {
         weather,
         sys: { country, sunrise, sunset },
       } = data;
-      console.log(data);
       setIsLoading(false);
       //clean and reformat the API data
       const newWeather = {
@@ -48,6 +47,11 @@ function WeatherProvider({ children }) {
       console.log(error);
     }
   };
+
+  //by default, the page will should the current weather in Toronto
+  useEffect(() => {
+    fetchData("Toronto");
+  }, []);
 
   return (
     <WeatherContext.Provider

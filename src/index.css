@@ -121,13 +121,12 @@ img {
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
 
 /* ----------------- footer ----------------- */
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 5rem;
@@ -168,8 +167,21 @@ img {
   flex: 1;
 }
 
-/* -----------------single weather----------------- */
-
+/* -----------------single weather card----------------- */
+.weather-group {
+  width: 100%;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.weahter-card {
+  max-width: calc((100% - 2rem) / 3);
+  min-width: calc((100% - 2rem) / 3);
+}
+.weather-info {
+  color: var(--clr-primary-5);
+}
 /* ----------------- about ----------------- */
 
 .about h2 {

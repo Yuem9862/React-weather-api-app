@@ -1,8 +1,10 @@
 import React from "react";
 import Loading from "../components/Loading";
-
+import Weather from "./Weather";
 import { useGlobalContext } from "../context";
-function WeatherList() {
+import { CardGroup } from "reactstrap";
+
+const WeatherList = () => {
   const { weathers, isLoading } = useGlobalContext();
 
   if (isLoading) {
@@ -10,16 +12,13 @@ function WeatherList() {
   }
 
   return (
-    <>
-      {weathers.map(({ id, city, country }) => {
-        return (
-          <article key={id}>
-            {city} {country}
-          </article>
-        );
+    <CardGroup className='weather-group'>
+      {weathers.map((weather) => {
+        const { id } = weather;
+        return <Weather key={id} {...weather} />;
       })}
-    </>
+    </CardGroup>
   );
-}
+};
 
 export default WeatherList;
