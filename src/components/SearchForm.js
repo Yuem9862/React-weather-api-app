@@ -4,8 +4,15 @@ import SearchAlert from "./Alert";
 import { useGlobalContext } from "../context";
 
 function SearchForm() {
-  const { searchTerm, setSearchTerm, weathers, setWeathers, alert, setAlert } =
-    useGlobalContext();
+  const {
+    searchTerm,
+    setSearchTerm,
+    weathers,
+    setWeathers,
+    alert,
+    setAlert,
+    isError,
+  } = useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +25,16 @@ function SearchForm() {
         type: "danger",
       });
     }
+
+    // if the fetch contains error, show alert
+    if (isError) {
+      setAlert({
+        isOpen: true,
+        msg: "Error 500, please retry later",
+        type: "danger",
+      });
+    }
+
     //if there are over 5 search terms, show alert
     if (weathers.length > 4) {
       setAlert({
