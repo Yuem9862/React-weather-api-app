@@ -1,5 +1,4 @@
 import React from "react";
-import Weather from "./Weather";
 import Loading from "../components/Loading";
 
 import { useGlobalContext } from "../context";
@@ -12,9 +11,12 @@ function WeatherList() {
 
   return (
     <>
-      {weathers.map((weather) => {
-        const { id } = weather;
-        return <Weather key={id} {...weather} />;
+      {weathers.map(({ id, city, country }) => {
+        return (
+          <article key={id}>
+            {city} {country}
+          </article>
+        );
       })}
     </>
   );

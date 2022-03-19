@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import SearchAlert from "./Alert";
 import { useGlobalContext } from "../context";
@@ -12,6 +12,7 @@ function SearchForm() {
     alert,
     setAlert,
     isError,
+    fetchData,
   } = useGlobalContext();
 
   const handleSubmit = (e) => {
@@ -43,11 +44,8 @@ function SearchForm() {
         type: "danger",
       });
     } else {
-      const newWeather = {
-        id: new Date().getTime().toString(),
-        city: searchTerm,
-      };
-      setWeathers([...weathers, newWeather]);
+      //fetch data
+      fetchData(searchTerm);
     }
     setSearchTerm("");
   };

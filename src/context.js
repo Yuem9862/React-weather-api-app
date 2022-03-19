@@ -6,7 +6,7 @@ const WeatherContext = React.createContext();
 function WeatherProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("london");
+  const [searchTerm, setSearchTerm] = useState("");
   const [weathers, setWeathers] = useState([]);
   const [alert, setAlert] = useState({
     isOpen: false,
@@ -22,14 +22,32 @@ function WeatherProvider({ children }) {
     try {
       const url = `${endpoint}q=${searchTerm}&appid=${process.env.REACT_APP_TEST_KEY}`;
       const response = await fetch(url);
-      console.log(response);
+      const data = await response.json();
+      const {
+        name,
+        weather,
+        sys: { country, sunrise, sunset },
+      } = data;
+      console.log(data);
+      setIsLoading(false);
+      //clean and reformat the API data
+      const newWeather = {
+        id: new Date().getTime().toString(),
+        city: name,
+        country: country,
+        weather: weather[0].main,
+        description: weather[0].description,
+        sunrise: sunrise,
+        sunset: sunset,
+      };
+      setWeathers([...weathers, newWeather]);
+
+      //log the error
     } catch (error) {
       setIsError(true);
       console.log(error);
     }
   };
-
-  useEffect(fetchData(searchTerm), []);
 
   return (
     <WeatherContext.Provider
