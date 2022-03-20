@@ -12,7 +12,8 @@ import { useGlobalContext } from "../context";
 
 const Weather = ({ country, city, weather, temp, icon, id }) => {
   const { weathers, setWeathers, setAlert } = useGlobalContext();
-
+  // ---- check rendering ----
+  // console.log("rendering " + city);
   const handleDelete = (e) => {
     if (weathers.length === 1) {
       setAlert({
@@ -55,4 +56,4 @@ const Weather = ({ country, city, weather, temp, icon, id }) => {
   );
 };
 
-export default React.memo(Weather);
+export default Weather;

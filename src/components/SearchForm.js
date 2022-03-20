@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import SearchAlert from "./Alert";
 import { useGlobalContext } from "../context";
 
-function SearchForm() {
-  const { searchTerm, setSearchTerm, weathers, alert, setAlert, fetchData } =
-    useGlobalContext();
+const SearchForm = () => {
+  const { weathers, alert, setAlert, fetchData } = useGlobalContext();
+
+  const inputRef = useRef(null);
+  const formRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const searchEntry = inputRef.current.value;
+
     //search is empty
-    if (!searchTerm) {
+    if (!searchEntry) {
       setAlert({
         isOpen: true,
         msg: "Please enter a city.",
@@ -31,8 +35,8 @@ function SearchForm() {
     }
 
     //search by multiple cities or single cities
-    if (searchTerm.includes(",")) {
-      const cities = searchTerm.split(",");
+    if (searchEntry.includes(",")) {
+      const cities = searchEntry.split(",");
       console.log(weathers.length, cities.length);
       if (weathers.length + cities.length > 9) {
         setAlert({
@@ -46,21 +50,22 @@ function SearchForm() {
         fetchData(city.trim());
       });
     } else {
-      fetchData(searchTerm);
+      fetchData(searchEntry);
     }
-    setSearchTerm("");
+
+    formRef.current.reset();
   };
 
   return (
     <section className='section-center'>
-      <Form className='search-form'>
+      <Form className='search-form' innerRef={formRef}>
         <FormGroup floating className='input'>
           <Input
             id='city'
             name='city'
+            type='text'
             placeholder='city'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            innerRef={inputRef}
           />
           <Label for='city'>City</Label>
         </FormGroup>
@@ -76,6 +81,6 @@ function SearchForm() {
       {alert.isOpen && <SearchAlert />}
     </section>
   );
-}
+};
 
 export default SearchForm;

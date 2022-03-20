@@ -6,7 +6,7 @@ const WeatherContext = React.createContext();
 function WeatherProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [weathers, setWeathers] = useState([]);
   const [alert, setAlert] = useState({
     isOpen: false,
@@ -60,9 +60,8 @@ function WeatherProvider({ children }) {
     }
   };
 
-  //by default, show 4 weathers
+  //by default, show 3 weathers
   useEffect(() => {
-    fetchData("shanghai");
     fetchData("london");
     fetchData("los angeles");
     fetchData("toronto");
@@ -72,12 +71,12 @@ function WeatherProvider({ children }) {
     <WeatherContext.Provider
       value={{
         isLoading,
-        searchTerm,
+
         weathers,
         alert,
         isError,
         setIsLoading,
-        setSearchTerm,
+
         setWeathers,
         setAlert,
         setIsError,
