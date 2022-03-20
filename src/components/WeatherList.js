@@ -5,9 +5,9 @@ import { useGlobalContext } from "../context";
 import { CardGroup } from "reactstrap";
 
 const WeatherList = () => {
-  const { weathers, isLoading } = useGlobalContext();
+  const { weathers, loading } = useGlobalContext();
 
-  if (isLoading) {
+  if (loading) {
     return <Loading />;
   }
 

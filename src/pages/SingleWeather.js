@@ -6,19 +6,19 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
+  CardImg,
   CardText,
   Button,
 } from "reactstrap";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 function SingleWeather() {
   const { weathers } = useGlobalContext();
   const { id } = useParams();
-  console.log(parseInt(id));
 
   //information on the page
-  const singleWeather = weathers.filter(
-    (weather) => weather.id === parseInt(id)
-  );
-  console.log(singleWeather);
+  const singleWeather = weathers.filter((weather) => weather.id === id);
   const { city, country, description, sunrise, sunset } = singleWeather[0];
 
   //format the Unix time
@@ -32,28 +32,38 @@ function SingleWeather() {
   const sunsetSeconds = sunsetDate.getSeconds();
 
   return (
-    <main className='section-center city-page'>
-      <Card>
-        <CardBody>
-          <CardTitle tag='h2'>{city}</CardTitle>
-          <CardSubtitle className='mb-2 text-muted' tag='h4'>
-            {country}
-          </CardSubtitle>
-        </CardBody>
-        <img alt='decorative image' src='https://picsum.photos/640/360' />
-        <CardBody>
-          <CardText>
-            📍 In user's time zone -- 🥞 Sunrise: {sunriseHours}:
-            {sunriseMinutes}:{sunriseSeconds} 📘 Sunset: {sunsetHours}:
-            {sunsetMinutes}:{sunsetSeconds}
-          </CardText>
-          <CardText>🌱 Current weather: {description}.</CardText>
-          <Button tag={Link} to='/' color='warning' className='capitalized-btn'>
-            Return
-          </Button>
-        </CardBody>
-      </Card>
-    </main>
+    <>
+      <Navbar />
+
+      <main className='section-center city-page'>
+        <Card>
+          <CardBody>
+            <CardTitle tag='h2'>{city}</CardTitle>
+            <CardSubtitle className='mb-2 text-muted' tag='h4'>
+              {country}
+            </CardSubtitle>
+          </CardBody>
+          <CardImg alt='decorative image' src='https://picsum.photos/640/360' />
+          <CardBody>
+            <CardText>
+              📍 In user's time zone -- 🥞 Sunrise: {sunriseHours}:
+              {sunriseMinutes}:{sunriseSeconds} 📘 Sunset: {sunsetHours}:
+              {sunsetMinutes}:{sunsetSeconds}
+            </CardText>
+            <CardText>🌱 Current weather: {description}.</CardText>
+            <Button
+              tag={Link}
+              to='/'
+              color='warning'
+              className='capitalized-btn'
+            >
+              Return
+            </Button>
+          </CardBody>
+        </Card>
+      </main>
+      <Footer />
+    </>
   );
 }
 

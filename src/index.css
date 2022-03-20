@@ -123,18 +123,24 @@ img {
   align-items: center;
   gap: 1rem;
 }
-
+.user-img {
+  border-radius: 50%;
+  border: var(--clr-primary-4) 2px solid;
+  height: 3rem;
+}
 /* ----------------- footer ----------------- */
 
 .main-container {
   position: relative;
-  min-height: calc(100vh - 1.5rem);
+  min-height: 100vh;
+  border: 1px transparent solid;
 }
 
 .home,
 .error,
 .about,
-.city-page {
+.city-page,
+.login {
   padding-bottom: 10rem;
 }
 .footer {
@@ -241,4 +247,27 @@ img {
 .city-page {
   color: var(--clr-primary-5);
   max-height: 70vh;
+}
+
+/* -----------------routing: login page----------------- */
+.login {
+  text-align: center;
+}
+.login img {
+  display: block;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  padding: 3rem;
+}
+
+/* preloading */
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.wrapper img {
+  width: 150px;
 }

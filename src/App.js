@@ -1,23 +1,38 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { Home, SingleWeather, Error, About } from "./pages";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  Home,
+  SingleWeather,
+  Error,
+  About,
+  Login,
+  PrivateRoute,
+  AuthWrapper,
+} from "./pages";
 
 function App() {
   return (
-    <>
+    <AuthWrapper>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' exact element={<Home />} />
-          <Route path='/city/:id' element={<SingleWeather />} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<Error />} />
-        </Routes>
-        <Footer />
+        <Switch>
+          <PrivateRoute path='/' exact={true}>
+            <Home />
+          </PrivateRoute>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/city/:id'>
+            <SingleWeather />
+          </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
+          <Route path='/*'>
+            <Error />
+          </Route>
+        </Switch>
       </Router>
-    </>
+    </AuthWrapper>
   );
 }
 

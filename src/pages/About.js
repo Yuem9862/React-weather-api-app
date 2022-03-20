@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function About() {
   return (
     <>
+      <Navbar />
       <main className='section-center about'>
         <h2>About the Project</h2>
         <p>
@@ -18,6 +21,7 @@ function About() {
           vel aspernatur reiciendis. Quidem.
         </p>
       </main>
+      <Footer />
     </>
   );
 }

@@ -1,9 +1,13 @@
 import React from "react";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 function Error() {
   return (
     <>
+      <Navbar />
       <main className='section-center error'>
         <h3>Oops! It's a dead end...</h3>
         <Button
@@ -16,6 +20,7 @@ function Error() {
           Return
         </Button>
       </main>
+      <Footer />
     </>
   );
 }
