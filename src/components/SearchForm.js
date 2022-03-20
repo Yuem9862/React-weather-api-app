@@ -1,18 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import SearchAlert from "./Alert";
 import { useGlobalContext } from "../context";
 
 function SearchForm() {
-  const {
-    searchTerm,
-    setSearchTerm,
-    weathers,
-    alert,
-    setAlert,
-    isError,
-    fetchData,
-  } = useGlobalContext();
+  const { searchTerm, setSearchTerm, weathers, alert, setAlert, fetchData } =
+    useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +24,7 @@ function SearchForm() {
     if (weathers.length > 8) {
       setAlert({
         isOpen: true,
-        msg: "Maximum 9 search. Please delete one search.",
+        msg: "Maximum 9 search. Please reduce one city.",
         type: "danger",
       });
       return;
@@ -44,7 +37,7 @@ function SearchForm() {
       if (weathers.length + cities.length > 9) {
         setAlert({
           isOpen: true,
-          msg: "Too many requests. Please delete one search.",
+          msg: "Too many requests. Please delete one city.",
           type: "danger",
         });
         return;

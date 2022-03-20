@@ -60,7 +60,7 @@ function WeatherProvider({ children }) {
     }
   };
 
-  //by default, the page will should the current weather in Toronto
+  //by default, show 4 weathers
   useEffect(() => {
     fetchData("shanghai");
     fetchData("london");
