@@ -74,4 +74,4 @@ const Weather = ({ country, city, weather, temp, icon, id }) => {
   );
 };
 
-export default Weather;
+export default React.memo(Weather);

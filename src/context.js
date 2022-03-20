@@ -24,15 +24,17 @@ function WeatherProvider({ children }) {
       const response = await fetch(url);
       const data = await response.json();
       const {
+        id,
         name,
         weather,
         main: { temp },
         sys: { country, sunrise, sunset },
       } = data;
       setIsLoading(false);
+
       //clean and reformat the API data
       const newWeather = {
-        id: new Date().getTime().toString(),
+        id: id,
         city: name,
         country: country,
         weather: weather[0].main,
@@ -42,17 +44,27 @@ function WeatherProvider({ children }) {
         temp: temp,
         icon: weather[0].icon,
       };
-      setWeathers([...weathers, newWeather]);
+      setWeathers((oldWeathers) => {
+        return [...oldWeathers, newWeather];
+      });
 
       //log the error
     } catch (error) {
       setIsError(true);
-      console.log(error);
+      setAlert({
+        isOpen: true,
+        msg: "Cannot find the city, please try it again",
+        type: "danger",
+      });
+      setIsLoading(false);
     }
   };
 
   //by default, the page will should the current weather in Toronto
   useEffect(() => {
+    fetchData("shanghai");
+    fetchData("london");
+    fetchData("los angeles");
     fetchData("toronto");
   }, []);
 

@@ -12,10 +12,13 @@ import {
 function SingleWeather() {
   const { weathers } = useGlobalContext();
   const { id } = useParams();
+  console.log(parseInt(id));
 
   //information on the page
-  const singleWeather = weathers.filter((weather) => weather.id === id);
-  console.log(singleWeather[0]);
+  const singleWeather = weathers.filter(
+    (weather) => weather.id === parseInt(id)
+  );
+  console.log(singleWeather);
   const { city, country, description, sunrise, sunset } = singleWeather[0];
 
   //format the Unix time
@@ -28,7 +31,6 @@ function SingleWeather() {
   const sunsetMinutes = sunsetDate.getMinutes();
   const sunsetSeconds = sunsetDate.getSeconds();
 
-  console.log(sunriseMinutes);
   return (
     <main className='section-center city-page'>
       <Card>
@@ -41,8 +43,8 @@ function SingleWeather() {
         <img alt='decorative image' src='https://picsum.photos/640/360' />
         <CardBody>
           <CardText>
-            🥞 Sunrise: {sunriseHours}:{sunriseMinutes}:{sunriseSeconds} AM 📘
-            Sunrise: {sunsetHours}:{sunsetMinutes}:{sunsetSeconds} PM
+            🥞 Sunrise: {sunriseHours}:{sunriseMinutes}:{sunriseSeconds} EDT 📘
+            Sunset: {sunsetHours}:{sunsetMinutes}:{sunsetSeconds} EDT
           </CardText>
           <CardText>🌱 Current weather: {description}.</CardText>
           <Button tag={Link} to='/' color='warning' className='capitalized-btn'>

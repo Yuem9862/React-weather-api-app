@@ -17,7 +17,7 @@ function SearchForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //if the search term is empty, show alert
+    //search is empty
     if (!searchTerm) {
       setAlert({
         isOpen: true,
@@ -26,23 +26,24 @@ function SearchForm() {
       });
     }
 
-    // if the fetch contains error, show alert
-    if (isError) {
-      setAlert({
-        isOpen: true,
-        msg: "Error 500, please retry later",
-        type: "danger",
+    //search by multiple cities
+    if (searchTerm.includes(",")) {
+      const cities = searchTerm.split(",");
+      cities.forEach((city) => {
+        fetchData(city.trim());
       });
+    } else {
+      fetchData(searchTerm);
+    }
+
+    //search by single cities
+    if (weathers.length > 10) {
       //if there are over 9 search terms, show alert
-    } else if (weathers.length > 10) {
       setAlert({
         isOpen: true,
         msg: "too many requests, please reduce one",
         type: "danger",
       });
-    } else {
-      //fetch data
-      fetchData(searchTerm);
     }
     setSearchTerm("");
   };
