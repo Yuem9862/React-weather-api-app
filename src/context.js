@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import { v4 as uuidv4 } from "uuid";
 const endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
 
 const WeatherContext = React.createContext();
@@ -34,7 +34,7 @@ function WeatherProvider({ children }) {
 
       //clean and reformat the API data
       const newWeather = {
-        id: id,
+        id: uuidv4(),
         city: name,
         country: country,
         weather: weather[0].main,

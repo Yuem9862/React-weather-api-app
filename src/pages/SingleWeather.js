@@ -43,8 +43,9 @@ function SingleWeather() {
         <img alt='decorative image' src='https://picsum.photos/640/360' />
         <CardBody>
           <CardText>
-            🥞 Sunrise: {sunriseHours}:{sunriseMinutes}:{sunriseSeconds} EDT 📘
-            Sunset: {sunsetHours}:{sunsetMinutes}:{sunsetSeconds} EDT
+            📍 In user's time zone -- 🥞 Sunrise: {sunriseHours}:
+            {sunriseMinutes}:{sunriseSeconds} 📘 Sunset: {sunsetHours}:
+            {sunsetMinutes}:{sunsetSeconds}
           </CardText>
           <CardText>🌱 Current weather: {description}.</CardText>
           <Button tag={Link} to='/' color='warning' className='capitalized-btn'>

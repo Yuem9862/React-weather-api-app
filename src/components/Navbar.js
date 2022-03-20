@@ -14,7 +14,12 @@ function Navbar() {
             <Button type='button' color='danger' className='capitalized-btn'>
               Login
             </Button>
-            <Button tag={Link} to='/about' className='capitalized-btn'>
+            <Button
+              tag={Link}
+              to='/about'
+              color='primary'
+              className='capitalized-btn'
+            >
               About
             </Button>
           </div>

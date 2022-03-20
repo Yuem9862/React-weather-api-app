@@ -21,29 +21,39 @@ function SearchForm() {
     if (!searchTerm) {
       setAlert({
         isOpen: true,
-        msg: "Please enter a city",
+        msg: "Please enter a city.",
         type: "danger",
       });
+      return;
     }
 
-    //search by multiple cities
+    //if there are over 9 search terms, show alert
+    if (weathers.length > 8) {
+      setAlert({
+        isOpen: true,
+        msg: "Maximum 9 search. Please delete one search.",
+        type: "danger",
+      });
+      return;
+    }
+
+    //search by multiple cities or single cities
     if (searchTerm.includes(",")) {
       const cities = searchTerm.split(",");
+      console.log(weathers.length, cities.length);
+      if (weathers.length + cities.length > 9) {
+        setAlert({
+          isOpen: true,
+          msg: "Too many requests. Please delete one search.",
+          type: "danger",
+        });
+        return;
+      }
       cities.forEach((city) => {
         fetchData(city.trim());
       });
     } else {
       fetchData(searchTerm);
-    }
-
-    //search by single cities
-    if (weathers.length > 10) {
-      //if there are over 9 search terms, show alert
-      setAlert({
-        isOpen: true,
-        msg: "too many requests, please reduce one",
-        type: "danger",
-      });
     }
     setSearchTerm("");
   };

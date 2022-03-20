@@ -13,27 +13,19 @@ import { useGlobalContext } from "../context";
 const Weather = ({ country, city, weather, temp, icon, id }) => {
   const { weathers, setWeathers, setAlert } = useGlobalContext();
 
-  const handleClick = (e) => {
-    //for more-info button
-    if (e.target.classList.contains("more")) {
-      //routering
-    }
-
-    //for delete button
-    if (e.target.classList.contains("delete")) {
-      if (weathers.length === 1) {
-        setAlert({
-          isOpen: true,
-          msg: "please enter a city",
-          type: "danger",
-        });
-      }
-      const removeID = e.target.parentElement.parentElement.parentElement.id;
-      const keepWeathers = weathers.filter((weather) => {
-        return weather.id !== removeID;
+  const handleDelete = (e) => {
+    if (weathers.length === 1) {
+      setAlert({
+        isOpen: true,
+        msg: "please enter a city",
+        type: "danger",
       });
-      setWeathers(keepWeathers);
     }
+    const removeID = e.target.parentElement.parentElement.parentElement.id;
+    const keepWeathers = weathers.filter((weather) => {
+      return weather.id !== removeID;
+    });
+    setWeathers(keepWeathers);
   };
 
   return (
@@ -51,21 +43,10 @@ const Weather = ({ country, city, weather, temp, icon, id }) => {
         </CardTitle>
         <CardText>{temp} °C</CardText>
         <div className='buttons'>
-          <Button
-            outline
-            className='more'
-            onClick={handleClick}
-            tag={Link}
-            to={`/city/${id}`}
-          >
+          <Button outline className='more' tag={Link} to={`/city/${id}`}>
             Learn More
           </Button>
-          <Button
-            type='button'
-            outline
-            onClick={handleClick}
-            className='delete'
-          >
+          <Button type='button' outline onClick={handleDelete}>
             Delete
           </Button>
         </div>
