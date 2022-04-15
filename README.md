@@ -15,4 +15,5 @@
 - Replace the weather icons
 - Understand the best practices for memorization
 
+
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
