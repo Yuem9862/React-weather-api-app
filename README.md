@@ -1,18 +1,19 @@
 # React-weather-api-app
 
 ### Project Description
-- A react-based app that will generate a Generate your O'RLY parody book cover. Inspired by [this](https://orly.nanmu.me/) Python/Vue project.
-- Tools: React
-- Deployed at https://book-cover-generator-yw.netlify.app/
+- A react-based weather app inspired by [this](https://orly.nanmu.me/) Reddit post. It is styled with Reactstrap and comes with a working authentication page. You can serach up to 10 cities (separated by comma) and each city can be display under a different route.
+- Tools: React, Reactstrap, 3rd party API, Auth0
+- Deployed at https://weather-api-app-yw.netlify.app/
 
 ### Takeaways
-- useState hook
-- third party library (html2canvas vs. html-to-image)
+- Unidirectional data flow in React
+- Prop drilling vs. Context API
+- Controlled input vs. Controlled input
+- Git branches
 
 ### To-dos
-- Learn Canvas API
-- The picture generated has a white margin at the bottom (needs to check the library)
-- Allower users to select the image by clicking the animals (needs to add an useContext hook)
+- Replace the weather icons
+- Understand the best practices for memorization
 
 
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
