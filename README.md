@@ -1,7 +1,7 @@
 # React-weather-api-app
 
 ### Project Description
-- A react-based app that will generate a Generate your O'RLY parody book cover. Inspired by [this]([https://www.reddit.com/r/Frontend/comments/qilk7g/interview_prep_for_jr_devs/](https://orly.nanmu.me/) Python/Vue project.
+- A react-based app that will generate a Generate your O'RLY parody book cover. Inspired by [this](https://orly.nanmu.me/) Python/Vue project.
 - Tools: React
 - Deployed at https://book-cover-generator-yw.netlify.app/
 
