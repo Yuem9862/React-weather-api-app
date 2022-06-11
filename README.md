@@ -14,4 +14,5 @@
 - The picture generated has a white margin at the bottom (needs to check the library)
 - Allower users to select the image by clicking the animals (needs to add an useContext hook)
 
+
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
